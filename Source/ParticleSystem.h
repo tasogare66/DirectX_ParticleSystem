@@ -37,7 +37,7 @@ private:
 
 public:
 
-	ParticleSystem(Input* input, char* csFilePath, float quadLength, float velocityTranslate, float velocityRotate, int maxParticles);
+	ParticleSystem(Input* input, LPCWSTR csFilePath, float quadLength, float velocityTranslate, float velocityRotate, int maxParticles);
 	virtual ~ParticleSystem();
 
 	bool initialize(HINSTANCE hInstance, HWND hWnd, int screenWidth, int screenHeight, int initRadius, bool enableDepthBuffer, bool windowed);

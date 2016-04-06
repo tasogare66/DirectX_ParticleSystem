@@ -63,7 +63,8 @@ bool D3D11Init::initialize(HINSTANCE hInstance, HWND hWnd, bool enableDepthBuffe
 	}
 
 	if(FAILED(result)){
-		DXTRACE_MSG("Failed to Create Device and SwapChain!");
+		//DXTRACE_MSG("Failed to Create Device and SwapChain!");
+		FW_ASSERT(0);
 		return false;
 	}
 
@@ -71,14 +72,16 @@ bool D3D11Init::initialize(HINSTANCE hInstance, HWND hWnd, bool enableDepthBuffe
 	result = _swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBufferTexture);
 
 	if(FAILED(result)){
-		DXTRACE_MSG("Failed to get the swap Chain Buffer!");
+		//DXTRACE_MSG("Failed to get the swap Chain Buffer!");
+		FW_ASSERT(0);
 		return false;
 	}
 
 	result = _device->CreateRenderTargetView(backBufferTexture, 0, &_backBufferTarget);
 
 	if(FAILED(result)){
-		DXTRACE_MSG("Failed to create render target view!");
+		//DXTRACE_MSG("Failed to create render target view!");
+		FW_ASSERT(0);
 		return false;
 	}
 
@@ -103,7 +106,8 @@ bool D3D11Init::initialize(HINSTANCE hInstance, HWND hWnd, bool enableDepthBuffe
 
 		if(FAILED(result)){
 			MessageBox(NULL, "Error creating depth texture!", "Error", 0);
-			DXTRACE_MSG("Failed to create depth texture!");
+			//DXTRACE_MSG("Failed to create depth texture!");
+			FW_ASSERT(0);
 			return false;
 		}
 
@@ -117,7 +121,8 @@ bool D3D11Init::initialize(HINSTANCE hInstance, HWND hWnd, bool enableDepthBuffe
 
 		if(FAILED(result)){
 			MessageBox(NULL, "Error creating depth stencil view!", "Error", 0);
-			DXTRACE_MSG("Failed to create depth stencil view!");
+			//DXTRACE_MSG("Failed to create depth stencil view!");
+			FW_ASSERT(0);
 			return false;
 		}
 
@@ -157,11 +162,12 @@ void D3D11Init::shutDown(){
 	_depthTexture = 0;
 }
 
-bool D3D11Init::CompileD3DShader(char* filePath, char* entry, char* shaderModel, ID3DBlob** buffer){
+bool D3D11Init::CompileD3DShader(LPCWSTR filePath, char* entry, char* shaderModel, ID3DBlob** buffer){
 	ID3DBlob*	errorBuffer = 0;
 	HRESULT		result = 0;
 
-	result = D3DX11CompileFromFile(filePath, NULL, NULL, entry, shaderModel, D3DCOMPILE_ENABLE_STRICTNESS, 0, 0, buffer, &errorBuffer, 0);
+	//result = D3DCompileFromFile((LPCWSTR)filePath, NULL, NULL, entry, shaderModel, D3DCOMPILE_ENABLE_STRICTNESS, 0, 0, buffer, &errorBuffer, 0);
+	result = D3DCompileFromFile(filePath, NULL, NULL/*D3D_COMPILE_STANDARD_FILE_INCLUDE*/, entry, shaderModel, D3DCOMPILE_ENABLE_STRICTNESS, 0, buffer, &errorBuffer);
 
 	if(FAILED(result)){
 		if(errorBuffer != 0){

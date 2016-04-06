@@ -4,7 +4,7 @@
 #include <xnamath.h>
 #include <cmath>
 
-CSGravity::CSGravity(char* csFilePath, int maxParticles) : _computeShader(), _ParticleBuffer(),
+CSGravity::CSGravity(LPCWSTR csFilePath, int maxParticles) : _computeShader(), _ParticleBuffer(),
 		_ParticleBufferView(), _cbConstantVariables(), _cbDynamicVariables(), _csFilePath(csFilePath){
 	_numThreads = 1024; //Defined in the compute shader
 }

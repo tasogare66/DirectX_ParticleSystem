@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <xnamath.h>
 #include <D3D11.h>
-#include <D3DX11.h>
+//#include <D3DX11.h>
 
 class ParticleShader{
 

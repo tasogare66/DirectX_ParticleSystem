@@ -2,8 +2,8 @@
 #define _D3D11INIT_
 
 #include <D3D11.h>
-#include <D3DX11.h>
-#include <DxErr.h>
+//#include <D3DX11.h>
+//#include <DxErr.h>
 
 class D3D11Init{
 protected:
@@ -32,7 +32,7 @@ public:
 	virtual void update(double frameTimeDiff, double time) = 0;
 	virtual void render() = 0;
 
-	static bool CompileD3DShader(char* filePath, char* entry, char* shaderModel, ID3DBlob** buffer);
+	static bool CompileD3DShader(LPCWSTR filePath, char* entry, char* shaderModel, ID3DBlob** buffer);
 
 private:
 	virtual bool loadContent() = 0;

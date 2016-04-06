@@ -12,7 +12,8 @@ struct Particle{
 	float3 oldPos;	 
 };
 
-StructuredBuffer<Particle> particleBuffer : register(u0);
+//StructuredBuffer<Particle> particleBuffer : register(u0);
+StructuredBuffer<Particle> particleBuffer : register(t0);
 
 GS_INPUT VS_Main( VS_INPUT input){
 	GS_INPUT output = (GS_INPUT)0;

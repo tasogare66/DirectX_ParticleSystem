@@ -26,7 +26,7 @@ private:
 	ID3D11Buffer*				_cbConstantVariables;
 	ID3D11Buffer*				_cbDynamicVariables;
 
-	char*						_csFilePath;
+	LPCWSTR						_csFilePath;
 	UINT						_numThreadGroupsX, _numThreadGroupsY, _numThreadGroupsZ;
 	int							_numThreads;
 
@@ -36,7 +36,7 @@ private:
 	void unload();
 
 public: 
-	CSGravity(char* csFilePath, int maxParticles);
+	CSGravity(LPCWSTR csFilePath, int maxParticles);
 	~CSGravity();
 
 	void update(ID3D11DeviceContext* devContext);

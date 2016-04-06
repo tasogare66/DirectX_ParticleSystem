@@ -5,8 +5,9 @@
 #include <D3D11.h>
 #include <random>
 #include <sstream>
+#include <WICTextureLoader.h>
 
-ParticleSystem::ParticleSystem(Input* input, char* csFilePath, float quadLength, float velocityTranslate, float velocityRotate, int maxParticles) :  D3D11Init(),
+ParticleSystem::ParticleSystem(Input* input, LPCWSTR csFilePath, float quadLength, float velocityTranslate, float velocityRotate, int maxParticles) :  D3D11Init(),
 													_input(input), _colorMap(0), _velocityTranslate(velocityTranslate), _velocityRotate(velocityRotate), _drawInformation(false),
 													_maxParticles(maxParticles), _alphaBlendState(), _quadLength(quadLength){
 	_gravity = new CSGravity(csFilePath, maxParticles);
@@ -49,11 +50,13 @@ bool ParticleSystem::loadContent(int screenWidth, int screenHeight, int initRadi
 	projMatrix = XMMatrixTranspose(projMatrix);
 
 	///////////////////////////////////////Loading Texture File for the Particle//////////////////////////////////////
-	HRESULT result = D3DX11CreateShaderResourceViewFromFile(_device, ".\\particle.png", 0, 0, &_colorMap, 0);
+	//HRESULT result = D3DX11CreateShaderResourceViewFromFile(_device, ".\\particle.png", 0, 0, &_colorMap, 0);
+	HRESULT result = DirectX::CreateWICTextureFromFile(_device, L".\\particle.png", 0, &_colorMap, 0);
 
 	if(FAILED(result)){
 		MessageBox(NULL, "Error loading texture!", "Error", 0);
-		DXTRACE_MSG("Failed to load the texture image!");
+		//DXTRACE_MSG("Failed to load the texture image!");
+		FW_ASSERT(0);
 		return false;
 	}
 	

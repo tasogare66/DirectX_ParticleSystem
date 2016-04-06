@@ -5,7 +5,7 @@
 #include "Timer.h"
 #include "Input.h"
 #include "IniParser.h"
-#include <DxErr.h>
+//#include <DxErr.h>
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int CmdShow){
@@ -25,7 +25,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 
 	//Initialize the particle system
-	ParticleSystem* ps = new ParticleSystem(input, "cs.hlsl", ini->_quadLength, ini->_velocityTranslate, ini->_velocityRotate, ini->_maxParticle);
+	ParticleSystem* ps = new ParticleSystem(input, L"cs.hlsl", ini->_quadLength, ini->_velocityTranslate, ini->_velocityRotate, ini->_maxParticle);
 	if(!ps->initialize(hInstance, wnd->getHWND(), ini->_screenWidth, ini->_screenHeight, ini->_initRadius, false, ini->_windowed)){
 		return -1;
 	}

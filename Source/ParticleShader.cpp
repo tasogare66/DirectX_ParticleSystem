@@ -30,17 +30,17 @@ bool ParticleShader::initializeShader(ID3D11Device* device, const XMMATRIX& proj
 	ID3DBlob* gsBuffer;
 
 
-	if(!D3D11Init::CompileD3DShader("vs.hlsl", "VS_Main", "vs_5_0", &vsBuffer)){
+	if(!D3D11Init::CompileD3DShader(L"vs.hlsl", "VS_Main", "vs_5_0", &vsBuffer)){
 		MessageBox(NULL, "Error compiling vertex shader!", "Error", 0);
 		return false;
 	}
 
-	if(!D3D11Init::CompileD3DShader("ps.hlsl", "PS_Main", "ps_5_0", &psBuffer)){
+	if(!D3D11Init::CompileD3DShader(L"ps.hlsl", "PS_Main", "ps_5_0", &psBuffer)){
 		MessageBox(NULL, "Error compiling pixel shader!", "Error", 0);
 		return false;
 	}
 
-	if(!D3D11Init::CompileD3DShader("gs.hlsl", "GS_Main", "gs_5_0", &gsBuffer)){
+	if(!D3D11Init::CompileD3DShader(L"gs.hlsl", "GS_Main", "gs_5_0", &gsBuffer)){
 		MessageBox(NULL, "Error compiling geometry shader!", "Error", 0);
 		return false;
 	}
