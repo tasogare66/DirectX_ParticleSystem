@@ -52,7 +52,7 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

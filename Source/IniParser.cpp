@@ -9,7 +9,7 @@ std::string INIParser::numberToString(float l_value){
 
 	try{
 		temp = boost::lexical_cast<std::string>(l_value);
-	}catch(boost::bad_lexical_cast &e){
+	}catch(boost::bad_lexical_cast &){
 		return "boost::lexical_cast error";
 	}
 
@@ -21,7 +21,7 @@ std::string INIParser::numberToString(int l_value){
 
 	try{
 		temp = boost::lexical_cast<std::string>(l_value);
-	}catch(boost::bad_lexical_cast &e){
+	}catch(boost::bad_lexical_cast &){
 		return "boost::lexical_cast error";
 	}
 
@@ -47,7 +47,7 @@ std::string INIParser::numberToString(unsigned char l_value){
 
 	try{
 		temp = boost::lexical_cast<std::string>((int)(l_value));
-	}catch(boost::bad_lexical_cast &e){
+	}catch(boost::bad_lexical_cast &){
 		return "boost::lexical_cast error";
 	}
 
@@ -59,7 +59,7 @@ float INIParser::stringToFloat(std::string l_str){
 
 	try{
 		temp = boost::lexical_cast<float>(l_str);
-	}catch(boost::bad_lexical_cast &e){
+	}catch(boost::bad_lexical_cast &){
 		return -1;
 	}
 
@@ -71,7 +71,7 @@ int INIParser::stringToInt(std::string l_str){
 
 	try{
 		temp = boost::lexical_cast<int>(l_str);
-	}catch(boost::bad_lexical_cast &e){
+	}catch(boost::bad_lexical_cast &){
 		return -1;
 	}
 

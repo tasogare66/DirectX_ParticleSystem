@@ -1,6 +1,7 @@
 #ifndef _INPUT_
 #define _INPUT_
 
+#define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
 
 class Input{
