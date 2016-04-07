@@ -209,8 +209,9 @@ void ParticleSystem::render(){
 
 	_devContext->OMSetBlendState(_alphaBlendState, blendFactor, 0xFFFFFFFF);
 	_devContext->ClearRenderTargetView(_backBufferTarget, clearColor);
-	_devContext->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
-
+	if (_depthStencilView) {
+		_devContext->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+	}
 	_particleShader->setUpShader(_devContext);
 
 	_gravity->update(_devContext);

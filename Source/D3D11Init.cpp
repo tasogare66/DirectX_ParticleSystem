@@ -53,8 +53,14 @@ bool D3D11Init::initialize(HINSTANCE hInstance, HWND hWnd, bool enableDepthBuffe
 	HRESULT result;
 	
 	for(unsigned int driver = 0; driver < totalDriverTypes; ++driver){
-		result = D3D11CreateDeviceAndSwapChain(0, driverType[driver], 0, 0, featureLevels, totalFeatureLevels, D3D11_SDK_VERSION, &swapChainDesc, 
-												&_swapChain, &_device, &_featureLevel, &_devContext);
+		result = D3D11CreateDeviceAndSwapChain(0, driverType[driver], 0,
+#if DEBUG
+			D3D11_CREATE_DEVICE_DEBUG,
+#else
+			0,
+#endif
+			featureLevels, totalFeatureLevels, D3D11_SDK_VERSION, &swapChainDesc,
+			&_swapChain, &_device, &_featureLevel, &_devContext);
 		if(SUCCEEDED(result)){
 			_driverType = driverType[driver];
 			break;
