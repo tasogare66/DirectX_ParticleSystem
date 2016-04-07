@@ -32,20 +32,20 @@ void CS_Main( uint3 groupID : SV_GroupID, uint groupIndex : SV_GroupIndex  )
 			float3 tempCurrPos;
 
 			if(attractor.x != 0 && attractor.y != 0 && attractor.z != 0){
-				a = attractor - p.currPos;
-				a = normalize(a)*500;
+				a = attractor - p.currPos - float3(0,-1,0);
+				a = normalize(a)*5*length(p.currPos.xyz);
 			} else {
-				a = float3(0,-1,0);
+				a = float3(0,-4,0);
 			}
 
-			tempCurrPos = 2.0*p.currPos - p.oldPos + a*frameTime*frameTime;
+			tempCurrPos = 2*p.currPos - 1*p.oldPos + a*frameTime*frameTime;
 			p.oldPos	= p.currPos;
 			p.currPos	= tempCurrPos;
 			
-			//Keep all the particles inside
-			if(length(p.currPos) > 55){
+			//Keep all the particles inside the sphere
+			if(length(p.currPos) > 100){
 				float3 norm = normalize(p.currPos);
-				p.currPos = norm*55;
+				p.currPos = norm*100;
 			}
 
 			srcParticleBuffer[ID] = p;

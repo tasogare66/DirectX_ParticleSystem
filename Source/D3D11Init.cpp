@@ -150,9 +150,9 @@ bool D3D11Init::initialize(HINSTANCE hInstance, HWND hWnd, bool enableDepthBuffe
 	 return loadContent();
 }
 
-void D3D11Init::shutDown(){
-	unloadContent();
-
+void D3D11Init::shutDown()
+{
+	//this->unloadContent();
 	if(_device) _device->Release();
 	if(_devContext) _devContext->Release();
 	if(_swapChain) _swapChain->Release();

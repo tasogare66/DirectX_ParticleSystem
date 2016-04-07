@@ -70,6 +70,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 	}
 
+	//delete input;
+	delete ps;
+
 	return 0;
 
 }

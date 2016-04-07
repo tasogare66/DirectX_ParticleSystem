@@ -49,7 +49,7 @@ public:
 
 private:
 	bool loadContent(int screenWidth, int screenHeight, int initRadius);
-	bool unloadContent();
+	bool unloadContent() override;
 
 	bool loadContent(){return true;}
 	void drawInformation();

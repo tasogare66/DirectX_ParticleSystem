@@ -14,7 +14,9 @@ ParticleSystem::ParticleSystem(Input* input, LPCWSTR csFilePath, float quadLengt
 
 }
 
-ParticleSystem::~ParticleSystem(){}
+ParticleSystem::~ParticleSystem(){
+	this->unloadContent();
+}
 
 bool ParticleSystem::initialize(HINSTANCE hInstance, HWND hWnd, int screenWidth, int screenHeight, int initRadius, bool enableDepthBuffer, bool windowed){
 	_camera = new ParticleCamera(screenWidth, screenHeight);

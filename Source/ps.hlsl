@@ -11,11 +11,19 @@ struct PS_INPUT{
 };
 
 float4 PS_Main(PS_INPUT input) : SV_TARGET{
-	float4 output = colorMap.Sample(colorSampler, input.tex0)*(10);
+	float4 output = colorMap.Sample(colorSampler, input.tex0)*(8);
+	
+	float red, green, blue;
+	
+	red 	= -0.5 + cos(time*0.4+1.5)*0.5;
+	green 	= -0.5 + cos(time*0.6)*sin(time*0.3)*0.35;
+	blue 	= -0.5 + sin(time*0.2)*0.5;
+	
+	
 
-	output.x = output.x - 0.4 + cos(0.1*time)*0.4;
-	output.y = output.y - 0.6 + cos(0.6*time)*0.6;
-	output.z = output.z  - 0.4 + sin(0.3*time)*0.4;
+	output.x = output.x + red;
+	output.y = output.y + green;
+	output.z = output.z  + blue;
 
 
 	return output;
