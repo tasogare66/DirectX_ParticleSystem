@@ -7,6 +7,9 @@
 
 #include <assert.h>
 
+// for http server
+#include <winsock2.h>
+
 #pragma warning( disable : 4838 )
 
 #if DEBUG
